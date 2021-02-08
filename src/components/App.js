@@ -2,6 +2,7 @@ import React from "react";
 import { ThemeProvider } from '@material-ui/core/styles';
 import Header from "../components/ui/Header";
 import theme from "./ui/Theme";
+import Test from "./ui/Test";
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
       <ThemeProvider theme={theme}> 
          <Header />
          Hello
+         <Test />
       </ThemeProvider>
 
    );
