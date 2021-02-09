@@ -1,7 +1,12 @@
 import React from 'react';
 import AppBar from "@material-ui/core/AppBar";
-import Toobar from "@material-ui/core/Toolbar";
-import { CssBaseline, makeStyles, Typography, useScrollTrigger } from '@material-ui/core';
+import Toolbar from "@material-ui/core/Toolbar";
+import { useScrollTrigger } from '@material-ui/core';
+import { makeStyles } from "@material-ui/styles";
+import logo from "../../assets/logo.svg";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+
 
 function ElevationScroll(props) {
    const { children } = props;
@@ -18,7 +23,19 @@ function ElevationScroll(props) {
 
 const useStyles = makeStyles(theme => ({
    toolbarMargin: {
-      ...theme.mixins.toolbar
+      ...theme.mixins.toolbar,
+      marginBottom: "3em"
+   },
+   logo: {
+      height: "7em"
+   },
+   tabContainer: {
+      marginLeft: "auto"
+   },
+   tab: {
+      ...theme.typography.tab,
+      minWidth: 10,
+      marginLeft: "25px"
    }
 }));
 
@@ -30,11 +47,16 @@ export default function Header(props) {
       {/* <CssBaseline /> */}
          <ElevationScroll>
             <AppBar position="fixed">
-               <Toobar>
-                  <Typography variant="h3" color="secondary">
-                     Daratchanan
-                  </Typography>
-               </Toobar>
+               <Toolbar disableGutters >
+                  <img className={classes.logo} src={logo} alt="company logo" />
+                  <Tabs className={classes.tabContainer}>
+                     <Tab className={classes.tab} label="Home"/>
+                     <Tab className={classes.tab} label="Services"/>
+                     <Tab className={classes.tab} label="The Revolution"/>
+                     <Tab className={classes.tab} label="About Us"/>
+                     <Tab className={classes.tab} label="Contact Us"/>
+                  </Tabs>
+               </Toolbar>
             </AppBar>
          </ElevationScroll>
          <div className={classes.toolbarMargin} />

@@ -10,10 +10,9 @@ function App() {
       <ThemeProvider theme={theme}> 
          <Header />
          Hello
-         <Test />
+         {/*  <Test /> */} 
       </ThemeProvider>
-
-   );
+   ); 
 }
 
 export default App;

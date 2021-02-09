@@ -9,7 +9,7 @@ export default createMuiTheme({
          blue: `${arcBlue}`,
          orange: `${arcOrange}`
       },
-      primary: { 
+      primary: {
          main: `${arcBlue}`
       },
       secondary: {
@@ -17,9 +17,12 @@ export default createMuiTheme({
       }
    },
    typography: {
-      h3: {
-         fontWeight: 300
+      tab: {
+         fontFamily: "Raleway",
+         textTransform: "none",
+         fontWeight: 700,
+         fontSize: "1rem",
       }
    }
 });
-   
+
