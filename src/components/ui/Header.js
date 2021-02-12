@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import { Menu, MenuItem, useScrollTrigger } from '@material-ui/core';
+import { useScrollTrigger } from '@material-ui/core';
 import { makeStyles } from "@material-ui/styles";
 import logo from "../../assets/logo.svg";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
 
 function ElevationScroll(props) {
@@ -52,7 +54,18 @@ const useStyles = makeStyles(theme => ({
       marginRight: "25px",
       height: "45px",
    },
-
+   menu: {
+      backgroundColor: theme.palette.common.blue,
+      color: "white",
+      borderRadius: "0px"
+   },
+   menuItem: {
+      ...theme.typography.tab,
+      opacity: 0.7,
+      "&:hover": {
+         opacity: 1
+      }
+   },
 }));
 
 export default function Header(props) {
@@ -67,7 +80,6 @@ export default function Header(props) {
 
    const handleClick = (e) => {
       setAnchorEl(e.currentTarget);
-      //console.log(e);
       setOpen(true);
    };
 
@@ -75,6 +87,7 @@ export default function Header(props) {
       setAnchorEl(null);
       setOpen(false);
    };
+
 
    useEffect(() => {
       if (window.location.pathname === "/" && value !== 0) {
@@ -154,11 +167,42 @@ export default function Header(props) {
                      anchorEl={anchorEl}
                      open={open}
                      onClose={handleClose}
-                     MenuListProps={{onMouseLeave: handleClose}}
+                     classes={{paper: classes.menu}}
+                     MenuListProps={{ onMouseLeave: handleClose }}
+                     elevation={0}
                   >
-                     <MenuItem onClick={handleClose}>Custom Software</MenuItem>
-                     <MenuItem onClick={handleClose}>Mobile App Development</MenuItem>
-                     <MenuItem onClick={handleClose}>Website Development</MenuItem>
+                     <MenuItem
+                        onClick={() => {handleClose(); setValue(1)}}
+                        component={Link}
+                        to="/services"
+                        classes={{ root: classes.menuItem }}
+                     >
+                        Services
+                     </MenuItem>
+                     <MenuItem
+                        onClick={() => {handleClose(); setValue(1)}}
+                        component={Link}
+                        to="/customsoftware"
+                        classes={{ root: classes.menuItem }}
+                     >
+                        Custom Software Development
+                     </MenuItem>
+                     <MenuItem
+                        onClick={() => {handleClose(); setValue(1)}}
+                        component={Link}
+                        to="/mobileapps"
+                        classes={{ root: classes.menuItem }}
+                     >
+                        Mobile App Development
+                     </MenuItem>
+                     <MenuItem
+                        onClick={() => {handleClose(); setValue(1)}}
+                        component={Link}
+                        to="/websites"
+                        classes={{ root: classes.menuItem }}
+                     >
+                        Website Development
+                     </MenuItem>
                   </Menu>
                </Toolbar>
             </AppBar>

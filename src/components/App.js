@@ -11,6 +11,7 @@ function App() {
       <ThemeProvider theme={theme}>
          <BrowserRouter>
             <Header />
+            {/* <Test/> */}
             <Switch>
                <Route exact path="/" component={() => <div>Home</div>} />
                <Route exact path="/services" component={() => <div>Services</div>} />
