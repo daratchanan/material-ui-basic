@@ -4,23 +4,21 @@ import Typography from '@material-ui/core/Typography';
 
 
 export default function Test() {
-   const [input, setInput] = useState("");
-   const [num, setNum] = useState(0);
+   const [num1, setNum1] = useState(0);
+   const [num2, setNum2] = useState(0);
+   const [result, setResult] = useState(0);
+   
 
-   const handleInput = (event) => {
-      setInput(event.target.value);
+   const handleNum1 = (e) => {
+      setNum1(Number(e.target.value))
+      setResult(num2+Number(e.target.value))
    };
 
-   const handleNum = (event) => {
-
-      debugger;
-      if (num < 0) {
-         setNum(0);
-      } else {
-         setNum(Number(event.target.value));
-      }
-      debugger;
+   const handleNum2 = (e) => {
+      setNum2(Number(e.target.value))
+      setResult(num1+Number(e.target.value))
    };
+
 
 
    return (
@@ -28,20 +26,21 @@ export default function Test() {
          <TextField
             label="Outlined"
             variant="outlined"
-            onChange={handleInput}
+            value={num1}
+            onChange={handleNum1}
+
          />
          <TextField
-            label="Number"
-            type="number"
+            label="Outlined"
             variant="outlined"
-            onChange={handleNum}
-            value={num}
+            value={num2}
+            onChange={handleNum2}
          />
-         <Typography variant="h6" gutterBottom>
-            {input.length}
-         </Typography>
-         <Typography variant="h6" gutterBottom>
-            {num}
+
+         <Typography
+            variant="h5"
+         >
+            {result}
          </Typography>
       </>
    )
